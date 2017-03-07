@@ -1,0 +1,107 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="Solution &#xe2;&#x80;&#x98;stm32f030_template&#xe2;&#x80;&#x99;" target="8" version="2">
+  <project Name="stm32f030_template">
+    <configuration
+      Name="Common"
+      Placement="Flash"
+      Target="STM32F030F4"
+      arm_architecture="v6M"
+      arm_core_type="Cortex-M0"
+      arm_endian="Little"
+      arm_fpu_type="None"
+      arm_interwork="No"
+      arm_linker_heap_size="256"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="512"
+      arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00004000;RAM;0x20000000;0x00001000"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="STM32F030x6;FLASH_PLACEMENT=1"
+      c_user_include_directories="$(ProjectDir);$(ProjectDir)/../application;$(ProjectDir)/../application/debug;$(ProjectDir)/../application/user_drivers;$(ProjectDir)/../CMSIS/Device/ST/STM32F0xx/Include;$(ProjectDir)/../CMSIS/Include"
+      debug_register_definition_file="$(ProjectDir)/STM32F030_Registers.xml"
+      gcc_entry_point="Reset_Handler"
+      gcc_optimization_level="Level 1"
+      linker_memory_map_file="$(ProjectDir)/STM32F030F4_MemoryMap.xml"
+      linker_output_format="bin"
+      linker_printf_fp_enabled="No"
+      linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
+      macros="DeviceHeaderFile=$(PackagesDir)/STM32F0xx/CMSIS/Device/Include/stm32f0xx.h;DeviceLibraryIdentifier=M0l;DeviceSystemFile=$(PackagesDir)/STM32F0xx/CMSIS/Device/Source/system_stm32f0xx.c;DeviceVectorsFile=$(PackagesDir)/STM32F0xx/Source/STM32F030_Vectors.s;DeviceFamily=STM32F0xx;DeviceSubFamily=STM32F030;Target=STM32F030F4;Placement=Flash"
+      package_dependencies="STM32F0xx"
+      project_directory=""
+      project_type="Executable"
+      target_reset_script="Reset();"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <folder Name="Script Files">
+      <file file_name="STM32F0xx_Target.js">
+        <configuration Name="Common" file_type="Reset Script" />
+      </file>
+      <configuration Name="Common" macros="Target=STM32F030F4" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="thumb_crt0.s" />
+      <file file_name="STM32F0xx_Startup.s" />
+      <file file_name="STM32F030_Vectors.s">
+        <configuration Name="Common" file_type="Assembly" />
+      </file>
+      <configuration Name="Common" macros="Target=STM32F030F4" />
+    </folder>
+    <folder Name="application">
+      <folder Name="user_drivers">
+        <file file_name="../application/user_drivers/gpio.h" />
+        <file file_name="../application/user_drivers/gpio.c" />
+        <file file_name="../application/user_drivers/core.c" />
+        <file file_name="../application/user_drivers/core.h" />
+        <file file_name="../application/user_drivers/system.c" />
+        <file file_name="../application/user_drivers/rcc.c" />
+        <file file_name="../application/user_drivers/rcc.h" />
+        <file file_name="../application/user_drivers/driver_config.h" />
+        <file file_name="../application/user_drivers/core_interrupt.c" />
+        <file file_name="../application/user_drivers/usart.c" />
+        <file file_name="../application/user_drivers/usart.h" />
+        <file file_name="../application/user_drivers/usart_interrupt.c" />
+      </folder>
+      <file file_name="../application/main.c" />
+      <file file_name="../application/main.h" />
+      <folder Name="debug">
+        <file file_name="../application/debug/cmd.c" />
+        <file file_name="../application/debug/cmd.h" />
+      </folder>
+    </folder>
+    <folder Name="CMSIS">
+      <folder Name="Include">
+        <file file_name="../CMSIS/Include/arm_common_tables.h" />
+        <file file_name="../CMSIS/Include/arm_const_structs.h" />
+        <file file_name="../CMSIS/Include/arm_math.h" />
+        <file file_name="../CMSIS/Include/cmsis_gcc.h" />
+        <file file_name="../CMSIS/Include/core_cmFunc.h" />
+        <file file_name="../CMSIS/Include/core_cmInstr.h" />
+        <file file_name="../CMSIS/Include/core_cm0.h" />
+      </folder>
+      <folder Name="Device">
+        <folder Name="Include">
+          <file file_name="../CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h" />
+          <file file_name="../CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h" />
+          <file file_name="../CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h" />
+        </folder>
+        <folder Name="Source">
+          <file file_name="../CMSIS/Device/ST/STM32F0xx/Source/system_stm32f0xx.c" />
+        </folder>
+      </folder>
+    </folder>
+    <configuration
+      Name="Debug"
+      debug_leave_target_running="No"
+      debug_target_connection="J-Link"
+      supplyPower="Yes" />
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 1"
+    gcc_optimization_level="Level 1" />
+</solution>
