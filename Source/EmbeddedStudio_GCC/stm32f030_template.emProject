@@ -24,6 +24,7 @@
       linker_memory_map_file="$(ProjectDir)/STM32F030F4_MemoryMap.xml"
       linker_output_format="bin"
       linker_printf_fp_enabled="No"
+      linker_printf_width_precision_supported="Yes"
       linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
       macros="DeviceHeaderFile=$(PackagesDir)/STM32F0xx/CMSIS/Device/Include/stm32f0xx.h;DeviceLibraryIdentifier=M0l;DeviceSystemFile=$(PackagesDir)/STM32F0xx/CMSIS/Device/Source/system_stm32f0xx.c;DeviceVectorsFile=$(PackagesDir)/STM32F0xx/Source/STM32F030_Vectors.s;DeviceFamily=STM32F0xx;DeviceSubFamily=STM32F030;Target=STM32F030F4;Placement=Flash"
       package_dependencies="STM32F0xx"

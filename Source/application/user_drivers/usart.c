@@ -71,7 +71,7 @@ uint8_t USART_Init(void)
     
     USART1_SET_CLOCK_SOURCE(USART_CLOCK_SOURCE_PCLK);
 
-    USART_SET_BAUDRATE(USART1, 38400);
+    USART_SET_BAUDRATE(USART1, 9600);
     
     /* Configure the pin, port: PA9 , PA10 */
     GPIO_MODER_SET_VALUE(GPIOA, GPIO_PIN_09 | GPIO_PIN_10, GPIO_MODER_MODE_ALTERNATE);
@@ -107,8 +107,18 @@ void USART1_Send(uint8_t * transmit_buffer, uint16_t size)
     /* Transmit polling method */
     while(size > 0)
     {
-        USART1->TDR = *transmit_buffer;
-        size--;
+        /* UART in 9bit length and no parity */
+        if ((USART1->CR1 & USART_CR1_WORD_LENGTH_9) && ((USART1->CR1 & (USART_CR1_PARITY_EVEN | USART_CR1_PARITY_ODD) == 0)))
+        {
+            /* Not support */
+            __NOP();
+        }
+        else
+        {
+            USART1->TDR = *transmit_buffer;
+            transmit_buffer++;
+            size--;
+        }
         while (USART_IS_TRANSMIT_COMPLETE(USART1) != 1)
         {
             __NOP();
